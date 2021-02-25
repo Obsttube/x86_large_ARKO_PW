@@ -1,0 +1,39 @@
+author:			Piotr Obst
+date:			02.01.2021
+description:	"Big" INTEL x86 project - finding 8th-type marker in a BMP file with arbitrary dimensions.
+usage:			find_markers [options]
+options:
+  -f <filename>		Find markers in the <filename> file.
+  -t				Find markers in all files in the 'tests' directory and compare them with the correct output.
+						Eg. test1.o contains correct output for the test1.bmp file.
+
+
+example usage:
+  ./find_markers -t
+  ./find_markers -f example.bmp
+  ./find_markers -f tests/test0.bmp
+  ./find_markers -f example.bmp -t
+  ./find_markers -tf example.bmp
+
+
+Tests should be put in the 'tests' folder. Each test file should have a corresponding output file.
+For example, the correct output for test1.bmp file is in test1.o
+Output for ./find_markers -f tests/test1.bmp:
+"
+103, 238
+309, 67
+309, 33
+"
+Contents of tests/test1.o:
+"
+103, 238
+309, 67
+309, 33
+
+" (file ends with an empty line)
+
+
+building the project:
+  a) Just use the "make" command.
+  b) Use the provided test.sh file for faster testing. It automatically cleans, builds, starts the program and print errors if they exist.
+		It used to be helpful in some stages of developement.
